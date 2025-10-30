@@ -2,10 +2,38 @@ import "./index.css";
 import logo from "./logo.png";
 import demo from "./demo.png";
 import terminal from "./terminal.png";
-import { useState } from "react";
+import { useState, useEffect } from "react";
+
+interface VersionInfo {
+  version: string;
+  downloadUrl: string;
+}
 
 export function App() {
   const [activeTab, setActiveTab] = useState<"agents" | "terminal">("agents");
+  const [versionInfo, setVersionInfo] = useState<VersionInfo | null>(null);
+
+  useEffect(() => {
+    fetch("https://r2.aizen.win/appcast.xml")
+      .then((res) => res.text())
+      .then((xmlText) => {
+        const parser = new DOMParser();
+        const xml = parser.parseFromString(xmlText, "text/xml");
+
+        const enclosure = xml.querySelector("enclosure");
+        const versionTag = xml.querySelector("enclosure");
+
+        if (enclosure) {
+          const downloadUrl = enclosure.getAttribute("url") || "";
+          const version = enclosure.getAttribute("sparkle:version") || "1.0.0";
+
+          setVersionInfo({ version, downloadUrl });
+        }
+      })
+      .catch((err) => {
+        console.error("Failed to fetch version info:", err);
+      });
+  }, []);
 
   return (
     <div className="app">
@@ -21,12 +49,12 @@ export function App() {
           </p>
           <div className="hero-cta">
             <a
-              href="https://github.com/vivy-company/aizen/releases"
+              href={versionInfo?.downloadUrl || "https://github.com/vivy-company/aizen/releases"}
               className="btn-primary"
               target="_blank"
               rel="noopener noreferrer"
             >
-              Download
+              Download {versionInfo?.version && `v${versionInfo.version}`}
             </a>
             <a
               href="https://github.com/vivy-company/aizen"
