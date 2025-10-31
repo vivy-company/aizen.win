@@ -29,13 +29,28 @@ body {
     min-height: 100vh;
 }
 
+.hero-logo-wrapper {
+    position: relative;
+    display: inline-flex;
+    flex-direction: column;
+    align-items: center;
+    margin: 0 auto 2.5rem;
+}
+
 .alpha-badge {
-    text-align: center;
-    padding: 12px 0;
-    font-size: 14px;
-    font-weight: 500;
-    color: #86868b;
-    letter-spacing: 0.01em;
+    position: absolute;
+    bottom: -8px;
+    padding: 3px 8px;
+    font-size: 8px;
+    font-weight: 600;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    color: var(--color-blue);
+    background: rgba(0, 113, 227, 0.16);
+    border: 1px solid rgba(0, 113, 227, 0.35);
+    border-radius: 999px;
+    backdrop-filter: blur(10px);
+    box-shadow: 0 10px 30px rgba(0, 113, 227, 0.22);
 }
 
 /* Hero Section */
@@ -89,7 +104,7 @@ body {
 .hero-logo {
     width: 140px;
     height: 140px;
-    margin: 0 auto 2rem;
+    margin: 62px auto 0;
     display: block;
 }
 
@@ -126,6 +141,25 @@ body {
     font-weight: 400;
     color: #86868b;
     margin-top: 1rem;
+}
+
+.hero-warning {
+    max-width: 480px;
+    margin: 1rem auto 0;
+    padding: 14px 18px;
+    font-size: 14px;
+    line-height: 1.42859;
+    color: var(--color-text);
+    background: rgba(255, 255, 255, 0.04);
+    border: 1px solid rgba(0, 113, 227, 0.35);
+    border-radius: 16px;
+    text-align: left;
+}
+
+.hero-warning strong {
+    color: var(--color-blue);
+    font-weight: 600;
+    letter-spacing: 0.02em;
 }
 
 .btn-primary,
@@ -168,6 +202,7 @@ body {
 
 /* Visual Section */
 .visual-section {
+    margin-top: 32px;
     padding: 0 0 100px;
 }
 
@@ -181,7 +216,7 @@ body {
     display: flex;
     justify-content: center;
     gap: 8px;
-    margin-bottom: 16px;
+    margin-bottom: 8px;
 }
 
 .tab-button {
