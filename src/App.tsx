@@ -3,6 +3,7 @@ import logo from "./logo.png";
 import demo from "./demo.png";
 import terminal from "./terminal.png";
 import { useState, useEffect } from "react";
+import { GitBranch, Terminal, Bot, Folder, Mic, Settings, RefreshCw, FileText, GitCommit } from "lucide-react";
 
 interface VersionInfo {
   version: string;
@@ -199,12 +200,6 @@ export function App() {
           <p className="hero-requirements">
             Requires macOS 13.5 Ventura or later (Apple Silicon ARM64 only).
           </p>
-          <div className="hero-warning">
-            <strong>Heads-up:</strong> the app is not notarized yet, macOS will
-            block the first launch. Open System Settings → Privacy &amp;
-            Security to allow it. We&apos;re actively working on finalizing our
-            Apple Developer membership to ship signed builds.
-          </div>
         </div>
       </section>
 
@@ -247,22 +242,16 @@ export function App() {
             All in one place.
           </h2>
           <div className="bento-grid">
-            <div className="bento-item bento-large">
-              <div className="bento-icon">
-                <svg width="48" height="48" viewBox="0 0 48 48" fill="none">
-                  <path
-                    d="M24 8L40 16V32L24 40L8 32V16L24 8Z"
-                    stroke="currentColor"
-                    strokeWidth="2"
-                    strokeLinejoin="round"
-                  />
-                  <path
-                    d="M24 8V24M24 24L8 16M24 24L40 16M24 24V40"
-                    stroke="currentColor"
-                    strokeWidth="2"
-                    strokeLinecap="round"
-                  />
-                </svg>
+            <div className="bento-item bento-small" style={{ gridColumn: '1 / 3', gridRow: '1' }}>
+              <div className="bento-icon" style={{ color: '#007aff' }}>
+                <Folder size={40} />
+              </div>
+              <h3>Workspace Management</h3>
+              <p>Organize repositories into workspaces.</p>
+            </div>
+            <div className="bento-item bento-small" style={{ gridColumn: '3 / 5', gridRow: '1' }}>
+              <div className="bento-icon" style={{ color: '#ff9500' }}>
+                <GitBranch size={48} />
               </div>
               <h3>Git Worktrees</h3>
               <p>
@@ -270,101 +259,40 @@ export function App() {
                 contexts.
               </p>
             </div>
-            <div className="bento-item bento-small">
-              <div className="bento-icon">
-                <svg width="40" height="40" viewBox="0 0 48 48" fill="none">
-                  <rect
-                    x="8"
-                    y="12"
-                    width="32"
-                    height="24"
-                    rx="2"
-                    stroke="currentColor"
-                    strokeWidth="2"
-                  />
-                  <path
-                    d="M14 20L18 24L14 28"
-                    stroke="currentColor"
-                    strokeWidth="2"
-                    strokeLinecap="round"
-                    strokeLinejoin="round"
-                  />
-                </svg>
-              </div>
-              <h3>GPU Terminal</h3>
-              <p>Powered by libghostty.</p>
-            </div>
-            <div className="bento-item bento-small">
-              <div className="bento-icon">
-                <svg width="40" height="40" viewBox="0 0 48 48" fill="none">
-                  <circle
-                    cx="24"
-                    cy="16"
-                    r="6"
-                    stroke="currentColor"
-                    strokeWidth="2"
-                  />
-                  <circle
-                    cx="14"
-                    cy="32"
-                    r="6"
-                    stroke="currentColor"
-                    strokeWidth="2"
-                  />
-                  <circle
-                    cx="34"
-                    cy="32"
-                    r="6"
-                    stroke="currentColor"
-                    strokeWidth="2"
-                  />
-                  <path
-                    d="M24 22V26M18 28L14 32M30 28L34 32"
-                    stroke="currentColor"
-                    strokeWidth="2"
-                    strokeLinecap="round"
-                  />
-                </svg>
+            <div className="bento-item bento-small" style={{ gridColumn: '1 / 3', gridRow: '2' }}>
+              <div className="bento-icon" style={{ color: '#34c759' }}>
+                <Bot size={40} />
               </div>
               <h3>Agents</h3>
-              <p>Claude, Codex, Gemini.</p>
+              <p>Claude, Codex, Gemini, Kimi, and custom agents via ACP.</p>
             </div>
-            <div className="bento-item bento-medium">
-              <div className="bento-icon">
-                <svg width="40" height="40" viewBox="0 0 48 48" fill="none">
-                  <rect
-                    x="10"
-                    y="10"
-                    width="28"
-                    height="28"
-                    rx="2"
-                    stroke="currentColor"
-                    strokeWidth="2"
-                  />
-                  <path
-                    d="M10 18H38M18 10V38"
-                    stroke="currentColor"
-                    strokeWidth="2"
-                  />
-                </svg>
+            <div className="bento-item bento-small" style={{ gridColumn: '3 / 5', gridRow: '2' }}>
+              <div className="bento-icon" style={{ color: '#30d158' }}>
+                <Terminal size={40} />
               </div>
-              <h3>Workspace Management</h3>
-              <p>Organize repositories into workspaces.</p>
+              <h3>Integrated Terminal</h3>
+              <p>Powered by libghostty.</p>
             </div>
-            <div className="bento-item bento-medium">
-              <div className="bento-icon">
-                <svg width="40" height="40" viewBox="0 0 48 48" fill="none">
-                  <path
-                    d="M24 14C24 14 16 18 16 24C16 30 24 34 24 34C24 34 32 30 32 24C32 18 24 14 24 14Z"
-                    stroke="currentColor"
-                    strokeWidth="2"
-                    strokeLinejoin="round"
-                  />
-                  <circle cx="24" cy="24" r="3" fill="currentColor" />
-                </svg>
+            <div className="bento-item bento-small" style={{ gridColumn: '1 / 3', gridRow: '3' }}>
+              <div className="bento-icon" style={{ color: '#ff9500' }}>
+                <GitCommit size={40} />
+              </div>
+              <h3>Git Operations</h3>
+              <p>Stage, commit, push, pull, and manage branches.</p>
+            </div>
+            <div className="bento-item bento-small" style={{ gridColumn: '3 / 4', gridRow: '3' }}>
+              <div className="bento-icon" style={{ color: '#ff3b30' }}>
+                <Mic size={40} />
               </div>
               <h3>Voice Mode</h3>
               <p>Talk to your agents with voice commands.</p>
+            </div>
+            <div className="bento-item bento-small" style={{ gridColumn: '4 / 5', gridRow: '3' }}>
+              <div className="bento-icon" style={{ color: '#ff2d55' }}>
+                <RefreshCw size={40} />
+              </div>
+              <h3>Automatic Updates</h3>
+              <p>Built-in update system via Sparkle.</p>
             </div>
           </div>
         </div>
@@ -377,30 +305,61 @@ export function App() {
             <div className="step-item">
               <span className="step-num">1.</span>
               <div>
-                <h3>Create workspaces</h3>
+                <h3>Set up workspaces</h3>
                 <p>
-                  Organize your Git repositories into workspaces for better
-                  project management.
+                  Organize your Git repositories into structured workspaces for
+                  efficient project management and navigation.
                 </p>
               </div>
             </div>
             <div className="step-item">
               <span className="step-num">2.</span>
               <div>
-                <h3>Manage worktrees</h3>
+                <h3>Create Git worktrees</h3>
                 <p>
-                  Create and manage Git worktrees with a visual UI. Work on
-                  multiple branches simultaneously.
+                  Use the visual interface to create and manage multiple Git
+                  worktrees, enabling simultaneous work on different branches
+                  without context switching.
                 </p>
               </div>
             </div>
             <div className="step-item">
               <span className="step-num">3.</span>
               <div>
-                <h3>Integrated tools</h3>
+                <h3>Perform Git operations</h3>
                 <p>
-                  Use the integrated terminal and AI agents to streamline your
-                  development workflow.
+                  Stage, commit, push, pull, and manage branches directly
+                  within the app's integrated Git tools.
+                </p>
+              </div>
+            </div>
+            <div className="step-item">
+              <span className="step-num">4.</span>
+              <div>
+                <h3>Use integrated terminal</h3>
+                <p>
+                  Access a GPU-accelerated terminal powered by libghostty for
+                  seamless command-line operations in your worktree directories.
+                </p>
+              </div>
+            </div>
+            <div className="step-item">
+              <span className="step-num">5.</span>
+              <div>
+                <h3>Interact with agents</h3>
+                <p>
+                  Chat with Claude, Codex, Gemini, Kimi, and custom agents via
+                  the Agent Client Protocol for code assistance and automation.
+                </p>
+              </div>
+            </div>
+            <div className="step-item">
+              <span className="step-num">6.</span>
+              <div>
+                <h3>Enable voice features</h3>
+                <p>
+                  Use voice input for hands-free interaction with agents and
+                  enjoy automatic updates via Sparkle.
                 </p>
               </div>
             </div>
@@ -413,25 +372,51 @@ export function App() {
           <h2 className="section-title">Frequently asked questions</h2>
           <div className="faq-list">
             <div className="faq-item">
-              <h3>What are Git worktrees?</h3>
+              <h3>What are workspaces?</h3>
               <p>
-                Git worktrees allow you to check out multiple branches at the
-                same time in different directories, making it easy to switch
-                between branches without stashing changes.
+                Workspaces are organizational containers for your Git repositories.
+                They help you group related projects and manage them efficiently
+                within the app's interface.
               </p>
             </div>
             <div className="faq-item">
-              <h3>Which AI agents are supported?</h3>
+              <h3>What are Git worktrees?</h3>
               <p>
-                Aizen supports Claude, Codex, and Gemini via the Agent Client
-                Protocol (ACP).
+                Git worktrees allow you to check out multiple branches at the
+                same time in different directories, making it easy to work on
+                multiple branches simultaneously without stashing changes.
+              </p>
+            </div>
+            <div className="faq-item">
+              <h3>Which agents are supported?</h3>
+              <p>
+                Aizen supports Claude, Codex, Gemini, Kimi, and custom agents via
+                the Agent Client Protocol (ACP). Agents can be automatically
+                discovered and installed from NPM or GitHub releases.
               </p>
             </div>
             <div className="faq-item">
               <h3>What terminal emulator does Aizen use?</h3>
               <p>
                 Aizen uses libghostty, a GPU-accelerated terminal emulator for
-                fast and responsive terminal sessions.
+                fast and responsive terminal sessions with support for split panes
+                and multiple tabs.
+              </p>
+            </div>
+            <div className="faq-item">
+              <h3>How does voice input work?</h3>
+              <p>
+                Voice input uses speech-to-text transcription with live waveform
+                visualization. You can use voice commands to interact with agents
+                for hands-free coding assistance.
+              </p>
+            </div>
+            <div className="faq-item">
+              <h3>How do updates work?</h3>
+              <p>
+                Aizen includes automatic update checks via Sparkle. Updates are
+                delivered seamlessly in the background, and you can configure
+                update preferences in the app settings.
               </p>
             </div>
           </div>
